@@ -86,7 +86,7 @@ fn http_response(socket: &mut Socket) -> Result<JsonValue, Error> {
 /// This client lib offers subscribe support to PubNub.
 ///
 /// ```no_run
-/// use edge_messaging_platform::pubnub::SubscribeClient;
+/// use nats_bridge::pubnub::SubscribeClient;
 ///
 /// let host = "psdsn.pubnub.com:80";
 /// let channel = "demo";
@@ -94,7 +94,7 @@ fn http_response(socket: &mut Socket) -> Result<JsonValue, Error> {
 /// let publish_key = "demo";
 /// let subscribe_key = "demo";
 /// let _secret_key = "secret";
-/// let agent = "nats-edge_messaging_platform";
+/// let agent = "nats-bridge";
 /// let mut pubnub = SubscribeClient::new(
 ///     host,
 ///     root,
@@ -102,7 +102,7 @@ fn http_response(socket: &mut Socket) -> Result<JsonValue, Error> {
 ///     subscribe_key,
 ///     _secret_key,
 ///     agent,
-///  ).expect("KAFKA Subscribe Client");
+///  ).expect("NATS Subscribe Client");
 ///
 /// let result = pubnub.next_message();
 /// assert!(result.is_ok());
@@ -208,7 +208,7 @@ impl SubscribeClient {
             channel = channel,
             timetoken = self.timetoken,
             agent = self.agent,
-            filter = "source%22%21%3D%22%27KAFKA%27".to_string(),
+            filter = "source%22%21%3D%22%27NATS%27".to_string(),
         );
         let request =
             format!("GET {} HTTP/1.1\r\nHost: pubnub\r\n\r\n", uri,);
@@ -225,7 +225,7 @@ impl SubscribeClient {
 /// This client lib offers publish support to PubNub.
 ///
 /// ```no_run
-/// use edge_messaging_platform::pubnub::PublishClient;
+/// use nats_bridge::pubnub::PublishClient;
 ///
 /// let host = "psdsn.pubnub.com:80";
 /// let root = "";
@@ -233,7 +233,7 @@ impl SubscribeClient {
 /// let publish_key = "demo";
 /// let subscribe_key = "demo";
 /// let _secret_key = "secret";
-/// let agent = "nats-edge_messaging_platform";
+/// let agent = "nats-bridge";
 /// let mut pubnub = PublishClient::new(
 ///     host,
 ///     root,
@@ -241,7 +241,7 @@ impl SubscribeClient {
 ///     subscribe_key,
 ///     _secret_key,
 ///     agent,
-///  ).expect("KAFKA Subscribe Client");
+///  ).expect("NATS Subscribe Client");
 ///
 /// let result = pubnub.publish(channel, "data");
 /// assert!(result.is_ok());
@@ -287,7 +287,7 @@ impl PublishClient {
             channel,
             encoded_message,
             pnsdk=self.agent,
-            meta="{\"source\":\"KAFKA\"}"
+            meta="{\"source\":\"NATS\"}"
         );
 
         let request =
