@@ -13,6 +13,16 @@ based on a NATs subjects.
 Easy drop-in operations.
 Dashboard management page included.
 
+### Dependency
+
+Docker is used for running the sample NATS instance.
+If you don't have docker, download and install it first.
+
+> Docker is not required to run the bridge in production.
+> There is an alternative non-container bridge install lower in this document.
+
+**Install Docker:** https://docs.docker.com/install/#supported-platforms
+
 ## Up and running in 10 seconds
 
 Want to try EMP with NATS?
