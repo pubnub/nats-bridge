@@ -11,7 +11,6 @@ Additional AES Symmetric key Cipher.
 Add push notifications and streaming events to Mobile and Web clients
 based on a NATs subjects.
 Easy drop-in operations.
-Dashboard management page included.
 
 ### Dependency
 
